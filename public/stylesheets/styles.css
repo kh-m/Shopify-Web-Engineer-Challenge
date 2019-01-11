@@ -9,7 +9,7 @@ body {
 
 header {
     text-align: center;
-    background-image: linear-gradient(90deg, #003366, #339966);
+    background-image: linear-gradient(90deg, #006699, #339966);
     padding: 25px;
 }
 
@@ -31,18 +31,28 @@ div.searchbar input[type=text] {
     padding: 10px;
     border: 1px solid grey;
     border-radius: 2px;
+    font-size: 20px;
     flex: 1 1 400px;
+}
+
+div.searchbar input[type=text]:focus {
+    outline: none;
 }
 
 div.searchbar button {
     background-color: #339966;
     border: none;
     border-radius: 2px;
+    box-shadow: 1px 2px 2px #cccc;
     flex: 0 0 50px;
     height: 50px;
 }
 
+div.searchbar button:focus {
+    outline: none;
+}
+
 div.searchbar button i {
     color: white;
-    
+
 }
