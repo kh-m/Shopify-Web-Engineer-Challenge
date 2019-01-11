@@ -17,6 +17,8 @@ $(document).ready(function() {
 });
 
 function search(items) {
+    // empty results
+    $('.searchresults').empty();
     $.getJSON("https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000")
         .then(findMatches)
 }
@@ -24,10 +26,14 @@ function search(items) {
 function findMatches(items) {
     items.forEach(function(item) {
         var searchVal = $('#searchInput').val();
-        var body = item.body;
         var title = item.title;
+        var body = (item.body).replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;nbsp;/g, '&nbsp');
         var keywords = item.keywords;
+        var id = item.id;
+        // var starred = //if its in starredItems it's true
         if(body.includes(searchVal) || title.includes(searchVal) || keywords.includes(searchVal)) {
+            var newItem = $('<li><i class="fas fa-star"></i><span class="title">'+ title +'</span><span class="body">'+ body +'</span></li>');
+            $('.searchresults').append(newItem);
             console.log(item);
         };
     })

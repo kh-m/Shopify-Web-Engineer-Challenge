@@ -57,7 +57,7 @@ div.searchbar button i {
 
 }
 
-div.searchresults {
+ul.searchresults {
     display: flex;
     flex-direction: column;
 }
