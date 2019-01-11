@@ -16,23 +16,14 @@
     </header>
 
     <div class="searchbar">
-        <form action="">
-            <input type="text" placeholder="waste search" name="searchItem">
-            <button type="submit"><i class="fas fa-search fa-2x"></i></button>
-        </form>
+        <section class="form">
+            <input id="searchInput" type="text" placeholder="waste search" name="searchItem">
+            <button id="searchButton" type="submit"><i class="fas fa-search fa-2x"></i></button>
+        </section>
     </div>
 
-    <div class="searchresults">
-        <% data.forEach(function(result) { %>
-        <% if(result['id'] === "zz2nxNZ3BfG$CFVyN1xDZA") { %>
-        <div class="resultitem">
-            <p>
-                <%= result['title'] %>
-            </p>
-        </div>
-        <% } %>
-        <% }) %>
-    </div>
+    <ul class="searchresults">
+    </ul>
 
 
     <script type="text/javascript" src="app.js"></script>

@@ -19,7 +19,7 @@ header h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-div.searchbar form {
+div.searchbar .form {
     text-align: center;
     padding: 20px;
     width: 100%;
@@ -55,4 +55,9 @@ div.searchbar button:focus {
 div.searchbar button i {
     color: white;
 
+}
+
+div.searchresults {
+    display: flex;
+    flex-direction: column;
 }
