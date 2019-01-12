@@ -72,7 +72,7 @@ ul.searchresults {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    list-style: none;
+    /* list-style: none; */
     padding: 0 20px;
 }
 
@@ -94,6 +94,7 @@ ul.searchresults > li > i {
 /* -- title -- */
 ul.searchresults > li > .title {
     flex: 1 1 35%;
+    padding: 0 5px;
 }
 
 /* -- body -- */
@@ -103,18 +104,12 @@ ul.searchresults > li > .body {
 
 ul.searchresults > li > span.body > ul {
     list-style-type: disc;
+    font-size: 0.9em;
 }
 
 ul.searchresults > li > span.body > ul >li {
-    /* not working/being applied ... */
-    list-style-type: disc;
     padding-bottom: 10px;
 }
-
-ul.searchresults > li > .body li {
-    display: inline-block;
-}
-
 
 /* p {
     margin: 0;
