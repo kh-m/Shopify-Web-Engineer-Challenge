@@ -53,11 +53,25 @@ function findMatches(items) {
         /// Can be made to listen to just keywords by replacing if statement with this one:
         // if(keywords.includes(searchVal)) {
         if(body.includes(searchVal) || title.includes(searchVal) || keywords.includes(searchVal)) {
-            var newItem = $('<li><i class="fas fa-star"></i><span class="title">'+ title +'</span><span class="body">'+ body +'</span></li>');
+            var newItem = '<li><i class="fas fa-star"></i><span class="title">'+ title +'</span><span class="body">'+ body +'</span></li>';
+            // if <i> does not have .greenStar, give it .greyStar
+            checkStar(newItem);
+            // Turns newItem into HTML w/ jQuery
+            newItem = $(newItem);
             $('.searchresults').append(newItem);
             console.log(item);
         };
     })
 };
+
+function checkStar(htmlAsString) {
+    if(htmlAsString.includes('greenStar')) {
+        console.log("it's green!");
+        return;
+    } else {
+        console.log("it's grey!");
+        htmlAsString.replace('fa-star', 'fa-star greyStar');
+    }
+}
 
 var starredItems = [];

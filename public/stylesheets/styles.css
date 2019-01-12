@@ -91,15 +91,23 @@ ul.searchresults > li > i {
     top: 3px;
 }
 
+.greenStar {
+    color: #339966;
+}
+
+.greyStar {
+    color: grey;
+}
+
 /* -- title -- */
 ul.searchresults > li > .title {
-    flex: 1 1 35%;
+    flex: 1 1 40%;
     padding: 0 5px;
 }
 
 /* -- body -- */
 ul.searchresults > li > .body {
-    flex: 1 1 65%;
+    flex: 1 1 60%;
 }
 
 ul.searchresults > li > span.body > ul {
@@ -110,6 +118,7 @@ ul.searchresults > li > span.body > ul {
 ul.searchresults > li > span.body > ul >li {
     padding-bottom: 10px;
 }
+
 
 /* p {
     margin: 0;
