@@ -61,3 +61,7 @@ ul.searchresults {
     display: flex;
     flex-direction: column;
 }
+
+/* p {
+    margin: 0;
+} */
