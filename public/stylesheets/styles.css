@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -12,14 +13,16 @@ body {
 
 header {
     text-align: center;
+    /* ADD OTHER WEB BROWSER ACCESIBILITY */
     background-image: linear-gradient(90deg, #006699, #339966);
-    padding: 25px;
+    padding: 15px;
 }
 
 header h1 {
     color: white;
     font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    letter-spacing: 0px;
 }
 
 /* ----------------------------- */
@@ -38,7 +41,7 @@ div.searchbar input[type=text] {
     padding: 10px;
     border: 1px solid grey;
     border-radius: 2px;
-    font-size: 20px;
+    font-size: 18px;
     flex: 1 1 400px;
 }
 
@@ -89,6 +92,7 @@ ul.searchresults > li > i {
     font-size: 0.8em;
     position: relative;
     top: 3px;
+    /* color: lightgrey; */
 }
 
 .greenStar {
@@ -96,23 +100,26 @@ ul.searchresults > li > i {
 }
 
 .greyStar {
-    color: grey;
+    color: lightgrey;
 }
 
 /* -- title -- */
 ul.searchresults > li > .title {
     flex: 1 1 40%;
     padding: 0 5px;
+    font-size: 0.95em;
+    font-weight: 200;
 }
 
 /* -- body -- */
 ul.searchresults > li > .body {
     flex: 1 1 60%;
+    font-size: 0.85em;
 }
 
 ul.searchresults > li > span.body > ul {
     list-style-type: disc;
-    font-size: 0.9em;
+    /* font-size: 0.9em; */
 }
 
 ul.searchresults > li > span.body > ul >li {
@@ -120,6 +127,38 @@ ul.searchresults > li > span.body > ul >li {
 }
 
 
-/* p {
-    margin: 0;
-} */
+ul.searchresults > li > span.body > ul >li p {
+    padding-left: 40px;
+}
+
+@media (min-width:1000px) {
+    ul.searchresults > li {
+        justify-content: center;
+    }
+
+    ul.searchresults > li > .title {
+        flex: 0 1 400px;
+        padding: 0 5px;
+        font-size: 0.95em;
+        font-weight: 200;
+    }
+
+    
+    ul.searchresults > li > .body {
+        flex: 0 1 600px;
+        font-size: 0.85em;
+    }
+}
+
+/* ----------------------------- */
+/* --- Error message styling --- */
+/* ----------------------------- */
+
+ul.searchresults h3 {
+    margin: auto;
+    color: red;
+}
+
+ul.searchresults p {
+    margin: auto;
+}
