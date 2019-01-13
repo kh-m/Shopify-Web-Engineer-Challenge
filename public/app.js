@@ -79,14 +79,4 @@ function displayError() {
     $('.searchresults').append('<h3>ERROR</h3><br><p>Could not connect to API. Please check your internet connection.</p>');
 }
 
-// function checkStar(htmlAsString) {
-//     if (htmlAsString.includes('greenStar')) {
-//         console.log("it's green!");
-//         return;
-//     } else {
-//         console.log("it's grey!");
-//         // htmlAsString.replace('fa-star', 'fa-star greyStar');
-//     }
-// }
-
 var starredItems = [];
