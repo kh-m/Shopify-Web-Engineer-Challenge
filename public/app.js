@@ -27,11 +27,8 @@ $(document).ready(function () {
         console.log("star clicked!");
         $(this).toggleClass('greyStar');
         $(this).toggleClass('greenStar');
-        
+        checkFav($(this));
     });
-
-    // Checks for favorites
-    
 
 });
 
@@ -65,15 +62,23 @@ function findMatches(items) {
         /// Can be made to listen to just keywords by replacing if statement with this one:
         // if(keywords.includes(searchVal)) {
         if (body.includes(searchVal) || title.includes(searchVal) || keywords.includes(searchVal)) {
-            var newItem = '<li><i class="fas fa-star"></i><span class="title">' + title + '</span><span class="body">' + body + '</span></li>';
+            var newItem = '<li><i class="fas fa-star greyStar"></i><span class="title">' + title + '</span><span class="body">' + body + '</span></li>';
             // Turns newItem into HTML w/ jQuery
             newItem = $(newItem);
             $('.searchresults').append(newItem);
-            $('.searchresults li i').addClass('greyStar');
+            // not needed ... just added it directly when created in newItem
+            // $('.searchresults li i').addClass('greyStar');
             console.log(item);
         };
     })
 };
+
+// Checks if the clicked star is now green (favorited)
+function checkFav(star) {
+    if( star.hasClass('greenStar') ) {
+        console.log("This is the one, it's green!");
+    };
+}
 
 function displayError() {
     $('.searchresults').append('<h3>ERROR</h3><br><p>Could not connect to API. Please check your internet connection.</p>');
