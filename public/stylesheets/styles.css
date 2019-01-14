@@ -70,7 +70,8 @@ div.searchbar button i {
 /* --- ul.searchresults styling --- */
 /* -------------------------------- */
 
-ul.searchresults {
+ul.searchresults,
+ul.favorites {
     flex-basis: 100%;
     display: flex;
     flex-direction: column;
@@ -79,7 +80,8 @@ ul.searchresults {
     padding: 0 20px;
 }
 
-ul.searchresults > li {
+ul.searchresults > li,
+ul.favorites > li {
     flex-basis: 100%;
     display: flex;
     margin-bottom: 15px;
@@ -87,13 +89,13 @@ ul.searchresults > li {
 }
 
 /* -- star -- */
-ul.searchresults > li > i {
+ul.searchresults > li > i,
+ul.favorites > li > i {
     flex: 0 0 20px;
     font-size: 0.8em;
     position: relative;
     top: 3px;
     left: 3px;
-    /* color: lightgrey; */
 }
 
 .greenStar {
@@ -105,7 +107,8 @@ ul.searchresults > li > i {
 }
 
 /* -- title -- */
-ul.searchresults > li > .title {
+ul.searchresults > li > .title,
+ul.favorites > li > .title {
     flex: 1 1 40%;
     padding: 0 5px;
     font-size: 0.95em;
@@ -113,31 +116,37 @@ ul.searchresults > li > .title {
 }
 
 /* -- body -- */
-ul.searchresults > li > .body {
+ul.searchresults > li > .body,
+ul.favorites > li > .body {
     flex: 1 1 60%;
     font-size: 0.85em;
 }
 
-ul.searchresults > li > span.body > ul {
+ul.searchresults > li > span.body > ul,
+ul.favorites > li > span.body > ul {
     list-style-type: disc;
     /* font-size: 0.9em; */
 }
 
-ul.searchresults > li > span.body > ul >li {
+ul.searchresults > li > span.body > ul >li,
+ul.favorites > li > span.body > ul >li{
     padding-bottom: 10px;
 }
 
 
-ul.searchresults > li > span.body > ul >li p {
+ul.searchresults > li > span.body > ul >li p,
+ul.favorites > li > span.body > ul >li p {
     padding-left: 40px;
 }
 
 @media (min-width:1000px) {
-    ul.searchresults > li {
+    ul.searchresults > li,
+    ul.favorites > li {
         justify-content: center;
     }
 
-    ul.searchresults > li > .title {
+    ul.searchresults > li > .title,
+    ul.favorites > li > .title {
         flex: 0 1 400px;
         padding: 0 5px;
         font-size: 0.95em;
@@ -145,7 +154,8 @@ ul.searchresults > li > span.body > ul >li p {
     }
 
     
-    ul.searchresults > li > .body {
+    ul.searchresults > li > .body,
+    ul.favorites > li > .body {
         flex: 0 1 600px;
         font-size: 0.85em;
     }

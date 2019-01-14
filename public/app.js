@@ -54,7 +54,7 @@ function findMatches(items) {
     items.forEach(function (item) {
         var title = item.title;
         // Replaces text such that HTML syntax is appropriate + removing randomly anomalous appearing <p> with nbsp
-        var body = (item.body).replace('&lt;p&gt;&amp;nbsp;&lt;/p&gt;', '').replace('&amp;nbsp;', '&nbsp').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+        var body = (item.body).replace('&lt;p&gt;&amp;nbsp;&lt;/p&gt;', '').replace(/&amp;nbsp;/g, '&nbsp').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
         var keywords = item.keywords;
         var id = item.id;
         // var starred = //if its in starredItems it's true
@@ -73,11 +73,28 @@ function findMatches(items) {
     })
 };
 
-// Checks if the clicked star is now green (favorited)
+// Checks if the clicked star is now green (favorited) [try to turn into promise]
+/// being passed the <i>
 function checkFav(star) {
-    if( star.hasClass('greenStar') ) {
-        console.log("This is the one, it's green!");
-    };
+    // If it is now favorited -> add it to fav list
+    if (star.hasClass('greenStar')) {
+        var fav = star.parent().clone();
+        $('.favorites').append(fav);
+        console.log("Added to favorites.");
+    } else if (!star.hasClass('greenStar')) {
+        // $(this).parent().toggleClass('greenStar');
+        $('ul.favorites > li').each(function () {
+            if( $(this)[0] == star.parent()[0] ) {
+                // console.log("FAVORITED!");
+            } else {
+                console.log("not working ...");
+            }
+            
+
+            console.log($(this)[0]);
+            console.log(star.parent()[0]);
+        })
+    }
 }
 
 function displayError() {
