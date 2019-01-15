@@ -1,19 +1,9 @@
-// var db = require('../models');
-
 // jQuery will perform these once page has loaded
 $(document).ready(function () {
     
-    // Seed database with API data
-    // db.Waste.deleteMany({}, function (err) {
-    //     if (err) {
-    //         console.log(err)
-    //     } else {
-    //         console.log("Cleared DB");
-    //         $.getJSON("https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000")
-    //             .then(logit)
-    //             .then(populateDB)
-    //     }
-    // })
+    // // Makes API request to local MongoDB
+    // $.getJSON('')
+
 
     // listens to 'enter' in input field
     $('#searchInput').keypress(function (event) {
@@ -47,14 +37,14 @@ $(document).ready(function () {
 
 });
 
-// Prompted by user 'search'; empties displayed results and pass data onto findMatches
-function search() {
-    $('.searchresults').empty();
-    // Fetches JSON API and passes it to findMatches or displays error if failed
-    $.getJSON("https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000")
-        .then(findMatches)
-        .fail(displayError);
-}
+// // Prompted by user 'search'; empties displayed results and pass data onto findMatches
+// function search() {
+//     $('.searchresults').empty();
+//     // Fetches JSON API and passes it to findMatches or displays error if failed
+//     $.getJSON("https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000")
+//         .then(findMatches)
+//         .fail(displayError);
+// }
 
 // // Searches API data for matches
 // function findMatches(items) {

@@ -4,4 +4,4 @@ mongoose.connect("mongodb://localhost:27017/toronto-waste-api", {useNewUrlParser
 
 mongoose.Promise = Promise;
 
-module.exports.waste = require('./waste')
+module.exports.Waste = require('./waste')
