@@ -1,10 +1,18 @@
 // jQuery will perform these once page has loaded
 $(document).ready(function () {
     
+    $('#searchInput').keyup(function() {
+        if ($('#searchInput').val() == '') {
+            $('.searchresults').empty();
+            console.log("It's empty!");
+        }
+    });
+
     // listens to 'enter' in input field
     $('#searchInput').keypress(function (event) {
         if (event.which == 13) {
             console.log("Pressed enter");
+            console.log(event);
             search();
         }
     });
@@ -55,10 +63,10 @@ function search() {
 function findMatches(items) {
     var searchVal = $('#searchInput').val();
     // Empties search results if input is empty, and exits function
-    if (searchVal == '') {
-        $('.searchresults').empty();
-        return;
-    }
+    // if (searchVal == '') {
+    //     $('.searchresults').empty();
+    //     return;
+    // }
     // Loops through each item in the API to find matches based on the search, then appends them to ul.searchresults in DOM
     items.forEach(function (item) {
         createLi(item, searchVal, '.searchresults');
@@ -126,6 +134,7 @@ function toggleFav(id, fav) {
         // console.log($(this).children());
         
         search();
+        // CHANGE THIS TO ONLY UPDATE THE STAR
     })
     .catch(function(err) {
         console.log("Didn't work", err);
