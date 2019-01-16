@@ -19,20 +19,30 @@ function seedDB() {
             axios.get('https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000')
                 .then(function (response) {
                     // console.log(response.data);
-                    check(response.data);
+                    addToDB(response.data);
                     })
                 .catch(function () {
                     console.log("ERROR!");
                 })
         }
     })
-}
+};
 
-function check(data) {
+function addToDB(data) {
 
     data.forEach(function(trash) {
-        if(trash.id) {
-            console.log("title");
+        if(trash.title && trash.body) {
+            var title = trash.title;
+            var body = trash.body;
+            var keywords = trash.keywords;
+            db.Waste.create({title: title, body: body, keywords: keywords}, function(err, addedTrash) {
+                if(err) {
+                    console.log("Error when adding to DB", err);
+                } else {
+                    console.log("Added to DB");
+                    console.log(addedTrash);
+                }
+            })
         } else {
             console.log("NO TITLE");
         }
@@ -40,19 +50,5 @@ function check(data) {
 
 };
 
-function populateDB(data) {
-    data.forEach(function (trash) {
-        if(trash.title) {
-            console.log("it has a title");
-        }
-        // Waste.create(trash, function (err, addedTrash) {
-        //     if (err) {
-        //         console.log(err)
-        //     } else {
-        //         console.log(addedTrash);
-        //     }
-        // })
-    })
-};
 
 module.exports = seedDB;

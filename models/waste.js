@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var wasteSchema = new mongoose.Schema({
     title: String,
     body: String,
+    keywords: String,
     favorite: {
         type: Boolean,
         default: false

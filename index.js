@@ -12,7 +12,7 @@ app.use(express.static(__dirname + "/public"));
 
 var wasteRoutes = require('./routes/waste')
 
-//app.use('/api/waste', wasteRoutes);
+app.use('/api/waste', wasteRoutes);
 
 app.get("/", function(req, res) {
     console.log("it's the root");
