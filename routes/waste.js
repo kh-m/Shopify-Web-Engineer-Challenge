@@ -18,8 +18,15 @@ router.get('/', function(req, res) {
 
 //  PUT:/api/waste/:wasteId
 /// updates 'favorite' value of selected waste
-router.put('/:wasteId', function(req, res) {
-
+router.put('/', function(req, res) {
+    db.Waste.findOneAndUpdate({ _id: req.body._id }, {favorite: req.body.favorite}, { new: true })
+        .then(function(favToggledTrash) {
+            res.json(favToggledTrash);
+            console.log(favToggledTrash);
+        })
+        .catch(function(err) {
+            console.log(err);
+        })
 });
 
 module.exports = router;

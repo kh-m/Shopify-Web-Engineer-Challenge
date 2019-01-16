@@ -165,12 +165,12 @@ ul.favorites > li > span.body > ul >li p {
 /* --- favorites styling --- */
 /* ------------------------- */
 
-.favorites {
-    padding: 20px;
+.favorites-section {
     background-color: #F7FEFA;
 }
 
-.favorites h2 {
+.favorites-section h2 {
+    padding: 20px;
     color: #339966;
 }
 

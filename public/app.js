@@ -24,11 +24,16 @@ $(document).ready(function () {
     });
 
     // Listens to clicks on the stars
-    $('ul.searchresults').on('click', 'i', function() {
+    // toggles the favorite attribute
+    // re-renders the favorties list
+    $('ul.searchresults, ul.favorites').on('click', 'i', function() {
         console.log("star clicked!");
-        $(this).toggleClass('greyStar');
-        $(this).toggleClass('greenStar');
-        checkFav($(this));
+        // Sends the li's data.id to toggleFav()
+        // SEARCHES AFTER 
+        var id = $(this).parent().data('id');
+        var fav = $(this).parent().data('favorite');
+        console.log("This item is currently", fav);
+        toggleFav(id, fav);
     });
 
 });
@@ -39,8 +44,12 @@ function search() {
     // Fetches JSON API and passes it to findMatches or displays error if failed
     $.getJSON('/api/waste')
         .then(findMatches)
+        .fail(displayError)
+
+    $.getJSON('/api/waste')
+        .then(findFav)
         .fail(displayError);
-}
+};
 
 // Searches API data for matches
 function findMatches(items) {
@@ -50,53 +59,86 @@ function findMatches(items) {
         $('.searchresults').empty();
         return;
     }
-
     // Loops through each item in the API to find matches based on the search, then appends them to ul.searchresults in DOM
     items.forEach(function (item) {
-        var title = item.title;
+        createLi(item, searchVal, '.searchresults');
+        // $('.searchresults').append(newItem);
+    })
+};
+
+// Searches for favorites in DB
+function findFav(items) {
+    $('.favorites').empty();
+    console.log("finding favorites");
+    // var searchVal = $('#searchInput').val();
+    items.forEach(function(item) {
+        if(item.favorite) {
+            createLi(item, '', '.favorites');
+        }
+    })
+}
+
+// Creates an <li> for a waste item
+function createLi(item, searchVal, appendClass) {
+    var title = item.title;
         // Replaces text such that HTML syntax is appropriate + removing randomly anomalous appearing <p> with nbsp
         var body = (item.body).replace('&lt;p&gt;&amp;nbsp;&lt;/p&gt;', '').replace(/&amp;nbsp;/g, '&nbsp').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
         var keywords = item.keywords;
-        var id = item.id;
+        var id = item._id;
+        var fav = item.favorite;
         // var starred = //if its in starredItems it's true
         /// The function searches for matches in the item's body, title & keywords.
         /// Can be made to listen to just keywords by replacing if statement with this one:
         // if(keywords.includes(searchVal)) {
         if (body.includes(searchVal) || title.includes(searchVal) || keywords.includes(searchVal)) {
-            var newItem = '<li><i class="fas fa-star greyStar"></i><span class="title">' + title + '</span><span class="body">' + body + '</span></li>';
+            // creates a variable to give the star approparite div, based on if fav or not
+            
+            if(fav) {
+                var starColor = "greenStar";
+            } else {
+                var starColor = "greyStar";
+                console.log(item.favorite);
+            }
+            var newItem = '<li><i class="fas fa-star '+ starColor +'"></i><span class="title">' + title + '</span><span class="body">' + body + '</span></li>';
             // Turns newItem into HTML w/ jQuery
             newItem = $(newItem);
-            $('.searchresults').append(newItem);
-            // not needed ... just added it directly when created in newItem
-            // $('.searchresults li i').addClass('greyStar');
+            // Adds an id data attribute to associate the element with it's corresponding DB _id
+            newItem.data('id', id);
+            newItem.data('favorite', fav);
+            $(appendClass).append(newItem);
             console.log(item);
         };
+}
+
+// Sends PUT request to API to toggle 'favorite'
+function toggleFav(id, fav) {
+    $.ajax({
+        method: 'PUT',
+        url: '/api/waste',
+        data: {
+            _id: id,
+            favorite: !fav
+        }
+    })
+    .then(function(changedFav) {
+        console.log(changedFav);
+        // TRY: TOGGLE STAR COLOR USING JQUERY
+        // console.log($(this).children());
+        
+        search();
+    })
+    .catch(function(err) {
+        console.log("Didn't work", err);
     })
 };
 
-// Checks if the clicked star is now green (favorited) [try to turn into promise]
-/// being passed the <i>
-function checkFav(star) {
-    // If it is now favorited -> add it to fav list
-    if (star.hasClass('greenStar')) {
-        var fav = star.parent().clone();
-        $('.favorites').append(fav);
-        console.log("Added to favorites.");
-    } else if (!star.hasClass('greenStar')) {
-        // $(this).parent().toggleClass('greenStar');
-        $('ul.favorites > li').each(function () {
-            if( $(this)[0] == star.parent()[0] ) {
-                // console.log("FAVORITED!");
-            } else {
-                console.log("not working ...");
-            }
-            
-
-            console.log($(this)[0]);
-            console.log(star.parent()[0]);
-        })
-    }
+// Renders favorites list
+function favoritesList() {
+    $.getJSON('/api/waste')
+        .then(findMatches)
+        .fail(displayError);
 }
+
 
 function displayError() {
     $('.searchresults').append('<h3>ERROR</h3><br><p>Could not connect to API. Please check your internet connection.</p>');
