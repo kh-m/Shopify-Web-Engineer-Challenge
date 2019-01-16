@@ -92,6 +92,7 @@ ul.favorites > li {
 ul.searchresults > li > i,
 ul.favorites > li > i {
     flex: 0 0 20px;
+    align-self: baseline;
     font-size: 0.8em;
     position: relative;
     top: 3px;

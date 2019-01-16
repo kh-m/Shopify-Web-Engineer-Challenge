@@ -1,6 +1,7 @@
 // jQuery will perform these once page has loaded
 $(document).ready(function () {
     
+    // Checks for when input field is empty, then clears search results
     $('#searchInput').keyup(function() {
         if ($('#searchInput').val() == '') {
             $('.searchresults').empty();
@@ -133,8 +134,11 @@ function toggleFav(id, fav) {
         // TRY: TOGGLE STAR COLOR USING JQUERY
         // console.log($(this).children());
         
-        search();
         // CHANGE THIS TO ONLY UPDATE THE STAR
+        // changedFav.favorite
+       
+        search();
+
     })
     .catch(function(err) {
         console.log("Didn't work", err);
