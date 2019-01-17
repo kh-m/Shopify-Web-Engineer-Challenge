@@ -20,7 +20,6 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/views/index.html");
 });
 
-
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server is running.");
 });

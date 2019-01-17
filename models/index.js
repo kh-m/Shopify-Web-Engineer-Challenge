@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.set('debug', true);
 
-mongoose.connect(DATABASEURL, {useNewUrlParser: true});
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
 
 mongoose.Promise = Promise;
 
