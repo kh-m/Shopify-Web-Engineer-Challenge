@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.set('debug', true);
-mongoose.connect("mongodb://localhost:27017/toronto-waste-api", {useNewUrlParser: true});
+
+mongoose.connect(DATABASEURL, {useNewUrlParser: true});
 
 mongoose.Promise = Promise;
 
