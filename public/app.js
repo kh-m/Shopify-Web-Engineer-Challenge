@@ -86,6 +86,9 @@ function createLi(item, searchVal, appendClass) {
         if (fav) {
             var starColor = "greenStar";
         } else {
+            if(!searchVal){
+                return;
+            }
             var starColor = "greyStar";
         }
 
