@@ -12,9 +12,13 @@ body {
 /* -----------------------*/
 
 header {
+    background: #006699; /* Old browsers */
+    background: -moz-linear-gradient(left, #006699 0%, #339966 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #006699 0%,#339966 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #006699 0%,#339966 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006699', endColorstr='#339966',GradientType=1 ); /* IE6-9 */
+
     text-align: center;
-    /* ADD OTHER WEB BROWSER ACCESIBILITY */
-    background-image: linear-gradient(90deg, #006699, #339966);
     padding: 15px;
 }
 
