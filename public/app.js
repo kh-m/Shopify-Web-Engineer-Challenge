@@ -52,6 +52,8 @@ function handleSearchResponse(res) {
 function findMatches(items) {
     $('.searchresults').empty();
     var searchVal = $('#searchInput').val();
+    // Exits if input is empty, so that it does not also render the starred items in the search results
+    if (!searchVal) return;
 
     // Loops through each item in the DB to find matches based on the search, then appends them to ul.searchresults in DOM
     items.forEach(function (item) {
@@ -86,9 +88,6 @@ function createLi(item, searchVal, appendClass) {
         if (fav) {
             var starColor = "greenStar";
         } else {
-            if(!searchVal){
-                return;
-            }
             var starColor = "greyStar";
         }
 
@@ -122,19 +121,13 @@ function toggleFav(id, fav) {
         })
 };
 
-// Modifies syntax of API content to appropriate
-function fixSyntax(body) {
-    fixedBody = body
-        .replace('&lt;p&gt;&amp;nbsp;&lt;/p&gt;', '')
-        .replace(/&amp;nbsp;/g, '&nbsp')
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&quot;/g, '"')
-        .replace(/_self/g, '_blank')
-        .replace(/<a href="/g, '<a target="_blank" href="');
-
-    return fixedBody;
-};
+// Modifies syntax of API body to appropriate
+function fixSyntax(body){
+    var el = document.createElement('textarea');
+    el.innerHTML = body;
+    
+    return el.value.replace(/_self/g, '_blank').replace(/<a href="/g, '<a target="_blank" href="');
+}
 
 // Displays error message if cannot connect to API
 function displayError() {
