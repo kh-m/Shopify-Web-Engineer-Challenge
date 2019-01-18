@@ -99,8 +99,8 @@ function createLi(item, searchVal, appendClass) {
         newItem.data('id', id);
         newItem.data('favorite', fav);
         $(appendClass).append(newItem);
-    };
-}
+    }
+};
 
 // Sends PUT request to API to toggle 'favorite' in DB
 function toggleFav(id, fav) {
@@ -134,9 +134,9 @@ function fixSyntax(body) {
         .replace(/<a href="/g, '<a target="_blank" href="');
 
     return fixedBody;
-}
+};
 
 // Displays error message if cannot connect to API
 function displayError() {
     $('.searchresults').append('<h3>ERROR</h3><br><p>Could not connect to API. Please check your internet connection.</p>');
-}
+};
