@@ -47,7 +47,6 @@ function addToDB(data) {
             console.log("NO TITLE");
         }
     })
-
 };
 
 

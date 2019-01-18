@@ -126,7 +126,6 @@ ul.favorites > li > .body {
 ul.searchresults > li > span.body > ul,
 ul.favorites > li > span.body > ul {
     list-style-type: disc;
-    /* font-size: 0.9em; */
 }
 
 ul.searchresults > li > span.body > ul >li,
