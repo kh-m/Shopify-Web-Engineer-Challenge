@@ -18,7 +18,7 @@
 <br>
 
 ## Running the code
-Clone (or download) the repository
+Clone (or download) the repository:
 ```javascript
 $ git clone https://github.com/kh-m/Shopify-Web-Engineer-Challenge.git
 ```
