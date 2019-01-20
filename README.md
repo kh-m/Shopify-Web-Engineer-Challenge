@@ -44,7 +44,7 @@ http://localhost:8000
 
 ## Process
 
-When tackling this challenge, I contemplated a few methods to achieve the requirements provided; mostly for how to handle the data and storing it. I chose to build it with:
+When tackling this challenge, I contemplated a few methods to achieve the requirements provided; mostly for data handling and storage. I chose to build it with:
 * Node.js
 * Express.js
 * Mongoose
@@ -59,9 +59,9 @@ When the user loads the root homepage route, a function is called to 'seed' the 
 <p>Though there are not many routes for this single-page web app, it does follow RESTful routing practices. Its JSON API can be viewed at /api/waste, and it performs PUT requests to the same route to update it.</p>
 
 ### Front-end
-<p>jQuery is used in the front-end to handle the data from the back-end API. It sorts through the data to find matches based on the item's keywords, as there is always 'over-fetching' of data when calling the API. It would then create li's in the search results, and li's in the favorites list if an item is 'favorited'.</p>
+<p>jQuery is used in the front-end to handle the data from the back-end API. It sorts through the data to find matches based on the item's keywords, as there is always 'over-fetching' of data when calling the API. It would then create li elements in the search results, and li elements in the favorites list if an item is 'favorited'.</p>
 
-*NOTE: Though the challenges requires that the search result matches be based on an item's **keywords**, the provided search example in screenshot suggests that the search is also looking for matches in the **title**. In my view, it makes more sense to also include the title and body (testing with such appeared to produce more relevant results). However, I decided to have it remain only search for matches in keywords, as it was explicitly stated in the challenge requirements.*
+*NOTE: Though the challenge requires that the search result matches be based on an item's **keywords**, the provided search example in screenshot suggests that the search is also looking for matches in the **title**. In my view, it makes more sense to also include the title and body (testing as such appeared to produce more relevant results). However, I decided to have it remain only search for matches in keywords, as it was explicitly stated in the challenge requirements.*
 
 <p>Toggling a 'favorite' item makes an AJAX PUT request to the back-end API. I also used the front-end to fix the syntax of an element's body and have all links open on a new blank page, by using the .replace() method</p>
 
