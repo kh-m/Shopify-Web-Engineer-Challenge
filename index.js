@@ -20,14 +20,14 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/views/index.html");
 });
 
-// For when running on external environment
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("Server running.");
-    console.log("PORT:", process.env.PORT);
-    console.log("IP:", process.env.IP);
-});
-
-// // For when running locally on port 8000
-// app.listen(8000, function(){
+// // For when running on external environment
+// app.listen(process.env.PORT, process.env.IP, function(){
 //     console.log("Server running.");
+//     console.log("PORT:", process.env.PORT);
+//     console.log("IP:", process.env.IP);
 // });
+
+// For when running locally on port 8000
+app.listen(8000, function(){
+    console.log("Server running.");
+});
