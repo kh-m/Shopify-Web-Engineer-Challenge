@@ -19,18 +19,27 @@
 
 ## Process
 
-When tackling this challenge, I contemplated a few methods to achieve the requirements provided; mostly for how to handle the data and storing it. In the end, I built it using/with the following:
+When tackling this challenge, I contemplated a few methods to achieve the requirements provided; mostly for how to handle the data and storing it. In the end, I built it with the following:
 * Node.js
 * Express.js
 * Mongoose
 * jQuery
 * Axios
 
+### Back-end
+<p>I wrote the back-end using Express.js in Node.js. The back-end in this web app is arguably redundant or 'overkill'.
+When the user loads the root homepage route, a function is called to 'seed' the Mongoose database; it empties it, makes an API call (from back-end using Axios) to the Toronto Waste Disposal API, loops through each item (that has a title) and saves its title, body a default favorite value of 'false' and a unique ID from Mongoose. When the user 'favorites' and 'unfavorites' and item, the data in the back-end is updated as such. Refreshing the homepage/root route seeds the database again.</p>
+<p>A version of this could have been possible without the need of a Mongoose database, with simply saving the data on the user's browser in an array in the front-end application. However, the method used allows for an easier upgrade for a platform with data persistence, where perhaps a user can save their favorites to their user account by logging in.</p>
+<p>A drawback with using a database the way it is currently being implemented is that it does not allow for multiple users to be using the website simultaneously; at least in terms of adding and removing 'favorites'. This would lead to different users modifying the same single 'favorites' list. But as this is web app is created for demonstration purposes only, with minimal expected traffic, I chose to keep it the way it is to demonstrate the use of Mongoose and data persistence.</p>
+
 ### Design/UI
 Design specifications for the website are provided simply as screenshot image file, with not much technical requirements other than the functionality of the buttons. For the gradient, I sampled a colour from each side (left and right) and created a linear gradient based off of that. For the rest of the website, I simply styled it with trial and error, until I got a result that was close enough to the image.
 
 
-# Challenge detials from Shopify
+### Hosting
+
+
+# Challenge details from Shopify
 
 >
 > Build a web app to search for waste items using the Toronto Waste Wizard database, and save frequently used ones.
