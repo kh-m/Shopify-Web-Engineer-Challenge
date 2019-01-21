@@ -11,7 +11,7 @@
 * Web app that provides user guidance with how to dispose of waste in Toronto
 * Displays search results from Toronto Waste Disposal's API, using item keywords
 * Items can be 'favorited' by clicking on their corresponding star
-  * Which would also add it render it to the 'favorites' list below the search results where it would remain as user searches for other types of trash, unless:
+  * Which would also render it to the 'favorites' list below the search results where it would remain as user searches for other types of trash, unless:
     * 'Unfavorited' by clicking on its corresponding green star
     * Page is refreshed by routing to root route   
 
